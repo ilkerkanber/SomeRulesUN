@@ -5,18 +5,17 @@ namespace Game.Concretes.Movements {
     public class PlayerVerticalMover 
     {
         PlayerController _playerController;
-        float distance = 5f;
         public PlayerVerticalMover(PlayerController playerController)
         {
             _playerController = playerController;
         }
-        public void Left()
+        public void Left(float speed)
         {
-            _playerController.transform.Translate(Vector3.forward * Time.deltaTime * distance);
+            _playerController.transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        public void Right()
+        public void Right(float speed)
         {
-            _playerController.transform.Translate(-Vector3.forward * Time.deltaTime * distance);
+            _playerController.transform.Translate(-Vector3.forward * Time.deltaTime * speed);
         }
     }
 }

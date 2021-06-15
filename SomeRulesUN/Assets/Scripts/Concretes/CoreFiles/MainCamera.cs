@@ -19,6 +19,5 @@ public class MainCamera : MonoBehaviour
         float z = watchGameObject.transform.position.z;
         transform.rotation = Quaternion.Euler(xRotate, yRotate, zRotate);
         transform.position = new Vector3(x+xDistance, y+yDistance, z+zDistance);
-
     }
 }
