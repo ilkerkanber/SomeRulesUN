@@ -12,11 +12,11 @@ namespace Game.Concretes.Movements {
         }
         public void Left()
         {
-            _playerController.transform.Translate(-Vector3.forward * Time.deltaTime * distance);
+            _playerController.transform.Translate(Vector3.forward * Time.deltaTime * distance);
         }
         public void Right()
         {
-            _playerController.transform.Translate(Vector3.forward * Time.deltaTime * distance);
+            _playerController.transform.Translate(-Vector3.forward * Time.deltaTime * distance);
         }
     }
 }

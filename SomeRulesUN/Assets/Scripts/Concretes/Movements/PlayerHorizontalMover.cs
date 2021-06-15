@@ -14,7 +14,7 @@ namespace Game.Concretes.Movements {
         }
         public void HorMove()
         {
-            _playerController.transform.Translate(-Vector3.right * Time.deltaTime * speed);
+            _playerController.transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
     }
 }
