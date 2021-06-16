@@ -9,7 +9,11 @@ namespace Game.Concretes.Controllers {
         PlayerHorizontalMover _playerHorizontalMover;
         PlayerVerticalMover _playerVerticalMover;
         AnimatorController _animatorController;
-        
+        CollisionController _raycastController;
+
+        [field:SerializeField]
+        public float RayDistance { get; private set; }
+
         [field: SerializeField]
         public float HorizontalSpeed { get; private set; }
 
@@ -18,20 +22,24 @@ namespace Game.Concretes.Controllers {
 
         void OnEnable()
         {
-            GameManager.Instance.EventGameOver += Dead;   
+            GameManager.Instance.EventGameOver += Dead;
+            GameManager.Instance.EventPlayerAttack += Attack;
         }
         void OnDisable()
         {
             GameManager.Instance.EventGameOver -= Dead;
+            GameManager.Instance.EventPlayerAttack -= Attack;
         }
         void Awake()
         {
             _animatorController = new AnimatorController(this);
             _playerHorizontalMover = new PlayerHorizontalMover(this);
             _playerVerticalMover = new PlayerVerticalMover(this);
+            _raycastController = new CollisionController(this);
         }
         void Update()
         {
+            _raycastController.CollisionControl();
             KeyController();
         }
         void FixedUpdate()
@@ -47,13 +55,9 @@ namespace Game.Concretes.Controllers {
                 _playerVerticalMover.Right(VerticalSpeed);
             }
         }
-      
-        void OnCollisionEnter(Collision collision)
+        void Attack()
         {
-            if (collision.collider.CompareTag("EnemyBody"))
-            {
-                GameManager.Instance.GameOver();
-            }
+            _animatorController.PlayerAttackAnim();
         }
         void Dead()
         {

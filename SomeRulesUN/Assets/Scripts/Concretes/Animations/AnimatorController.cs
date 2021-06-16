@@ -13,9 +13,13 @@ namespace Game.Animations {
             _playerController = playerController;
             animator = playerController.GetComponent<Animator>();
         }
-       public void PlayerDeadAnim()
+        public void PlayerDeadAnim()
         {
             animator.SetTrigger("IsDead");
+        }
+        public void PlayerAttackAnim()
+        {
+            Debug.Log("Saldýrý Gerçekleþti");
         }
 
     }

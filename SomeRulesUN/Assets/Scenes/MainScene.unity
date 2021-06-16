@@ -991,6 +991,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9022975183284581334, guid: 98d04ea4a2dc87740a7d1048e760eb20, type: 3}
+      propertyPath: <RayDistance>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022975183284581334, guid: 98d04ea4a2dc87740a7d1048e760eb20, type: 3}
       propertyPath: <VerticalSpeed>k__BackingField
       value: 3
       objectReference: {fileID: 0}

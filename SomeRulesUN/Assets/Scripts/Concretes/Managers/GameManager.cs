@@ -6,9 +6,14 @@ public class GameManager : SingletonSetup<GameManager>
 {
     public event System.Action EventGameOver;
     public event System.Action EventWinGame;
+    public event System.Action EventPlayerAttack;
     void Awake()
     {
         Setup(this);
+    }
+    public void PlayerAttack(){
+
+        EventPlayerAttack?.Invoke();
     }
     public void GameOver() {
 
