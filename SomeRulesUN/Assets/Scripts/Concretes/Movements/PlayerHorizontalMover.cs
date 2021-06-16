@@ -11,7 +11,6 @@ namespace Game.Concretes.Movements {
         }
         public void HorMove(float speed)
         {
-            speed = _playerController.HorizontalSpeed;
             _playerController.transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
     }

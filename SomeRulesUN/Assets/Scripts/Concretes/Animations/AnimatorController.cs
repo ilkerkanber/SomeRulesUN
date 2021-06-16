@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Animations {
-    public class AnimatorController : MonoBehaviour
+    public class AnimatorController
     {
         PlayerController _playerController;
         Animator animator;

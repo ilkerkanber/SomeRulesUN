@@ -15,7 +15,15 @@ namespace Game.Concretes.Controllers {
 
         [field: SerializeField]
         public float VerticalSpeed { get; private set; }
-      
+
+        void OnEnable()
+        {
+            GameManager.Instance.EventGameOver += Dead;   
+        }
+        void OnDisable()
+        {
+            GameManager.Instance.EventGameOver -= Dead;
+        }
         void Awake()
         {
             _animatorController = new AnimatorController(this);
@@ -40,20 +48,19 @@ namespace Game.Concretes.Controllers {
             }
         }
       
-        private void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.tag=="Enemy")
+            if (collision.collider.CompareTag("EnemyBody"))
             {
-                IsDead();
+                GameManager.Instance.GameOver();
             }
         }
-        void IsDead()
+        void Dead()
         {
             VerticalSpeed = 0;
             HorizontalSpeed = 0;
             _animatorController.PlayerDeadAnim();
         }
-
 
     }
 
