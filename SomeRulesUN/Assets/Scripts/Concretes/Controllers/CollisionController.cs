@@ -16,22 +16,27 @@ namespace Game.Concretes.Controllers
             rayDistance = _playerController.RayDistance;
         }
         
-        public void CollisionControl()
+        internal void CollisionControl()
         {
             playerPos = _playerController.transform.position;
 
+            //SALDIRMA
             if (Physics.Raycast(playerPos, Vector3.right, out targetObject, rayDistance))
             {
                 if(targetObject.collider.gameObject.tag == "EnemyBody")
                 {
-                    GameManager.Instance.PlayerAttack();
+                    Debug.Log("EnemyBody collision:Attack");
+
+                    _playerController.IsAttack = true;
                 }
             }
+            //ÇARPIÞMA
             if (Physics.Raycast(playerPos, Vector3.right, out targetObject, 1f))
             {
                 if (targetObject.collider.gameObject.tag == "EnemyBody")
                 {
-                    GameManager.Instance.GameOver();
+                    Debug.Log("EnemyBody collision:Dead");
+                    _playerController.IsDead = true;
                 }
             }
 

@@ -1,5 +1,6 @@
 using Game.Abstracts.Inputs;
 using Game.Animations;
+using Game.Concretes.Managers;
 using Game.Concretes.Movements;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ namespace Game.Concretes.Controllers {
         AnimatorController _animatorController;
         CollisionController _raycastController;
 
+        public bool IsDead { get; internal set; }
+        public bool IsAttack { get; internal set; }
+
         [field:SerializeField]
         public float RayDistance { get; private set; }
 
@@ -19,17 +23,6 @@ namespace Game.Concretes.Controllers {
 
         [field: SerializeField]
         public float VerticalSpeed { get; private set; }
-
-        void OnEnable()
-        {
-            GameManager.Instance.EventGameOver += Dead;
-            GameManager.Instance.EventPlayerAttack += Attack;
-        }
-        void OnDisable()
-        {
-            GameManager.Instance.EventGameOver -= Dead;
-            GameManager.Instance.EventPlayerAttack -= Attack;
-        }
         void Awake()
         {
             _animatorController = new AnimatorController(this);
@@ -37,10 +30,30 @@ namespace Game.Concretes.Controllers {
             _playerVerticalMover = new PlayerVerticalMover(this);
             _raycastController = new CollisionController(this);
         }
+        void Start()
+        {
+            PlayerManager.Instance.EventPlayerAttack += Attack;
+            PlayerManager.Instance.EventPlayerDead += Dead;
+        }
+        void OnDisable()
+        {
+            PlayerManager.Instance.EventPlayerAttack -= Attack;
+            PlayerManager.Instance.EventPlayerDead -= Dead;
+
+        }
+      
         void Update()
         {
             _raycastController.CollisionControl();
             KeyController();
+            if (IsAttack)
+            {
+                PlayerManager.Instance.PlayerAttack();
+            }
+            if (IsDead)
+            {
+                PlayerManager.Instance.PlayerDead();
+            }
         }
         void FixedUpdate()
         {

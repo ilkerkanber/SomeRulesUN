@@ -9,11 +9,11 @@ namespace Game.Concretes.Movements {
         {
             _playerController = playerController;
         }
-        public void Left(float speed)
+        internal void Left(float speed)
         {
             _playerController.transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        public void Right(float speed)
+        internal void Right(float speed)
         {
             _playerController.transform.Translate(-Vector3.forward * Time.deltaTime * speed);
         }

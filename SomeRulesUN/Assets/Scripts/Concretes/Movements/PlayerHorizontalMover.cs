@@ -9,7 +9,7 @@ namespace Game.Concretes.Movements {
         {
             _playerController = playerController;
         }
-        public void HorMove(float speed)
+        internal void HorMove(float speed)
         {
             _playerController.transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
