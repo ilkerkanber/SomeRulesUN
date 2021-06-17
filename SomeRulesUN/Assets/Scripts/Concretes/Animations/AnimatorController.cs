@@ -6,11 +6,11 @@ using UnityEngine;
 namespace Game.Animations {
     public class AnimatorController
     {
-        PlayerController _playerController;
         Animator animator;
+        float AnimationRespawnTime = 1f;
+        float waitTime;
         public AnimatorController(PlayerController playerController)
         {
-            _playerController = playerController;
             animator = playerController.GetComponent<Animator>();
         }
         
@@ -20,10 +20,13 @@ namespace Game.Animations {
         }
         public void PlayerAttackAnim()
         {
-           // _playerController.IsAttack = false;
-            
+            if (Time.time - waitTime > AnimationRespawnTime) {
+                waitTime = Time.time;
+                animator.SetTrigger("IsAttack");
+                animator.SetTrigger("IsRun");
+            }
+           
         }
-
     }
 }
 

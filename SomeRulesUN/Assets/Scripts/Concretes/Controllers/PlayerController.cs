@@ -12,8 +12,8 @@ namespace Game.Concretes.Controllers {
         AnimatorController _animatorController;
         CollisionController _raycastController;
 
-        public bool IsDead { get; internal set; }
-        public bool IsAttack { get; internal set; }
+        public bool IsDead { get; set; }
+        public bool IsAttack { get; set; }
 
         [field:SerializeField]
         public float RayDistance { get; private set; }
@@ -49,6 +49,7 @@ namespace Game.Concretes.Controllers {
             if (IsAttack)
             {
                 PlayerManager.Instance.PlayerAttack();
+                IsAttack = false;
             }
             if (IsDead)
             {

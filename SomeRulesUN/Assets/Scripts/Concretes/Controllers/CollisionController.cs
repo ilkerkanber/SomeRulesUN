@@ -22,7 +22,8 @@ namespace Game.Concretes.Controllers
             //SALDIRMA
             if (Physics.Raycast(playerPos, Vector3.right, out targetObject, rayDistance))
             {
-                if(targetObject.collider.gameObject.tag == "EnemyBody")
+                Debug.Log(rayDistance);
+                if(targetObject.collider.gameObject.tag == "Brokenable")
                 {
                     Debug.Log("EnemyBody collision:Attack");
 
