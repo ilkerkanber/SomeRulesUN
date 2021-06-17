@@ -6,7 +6,7 @@ public class BrokenableWallController : MonoBehaviour
 {
     Animator animator;
 
-    private void Start()
+    void Start()
     {
         animator = GetComponent<Animator>();
     }

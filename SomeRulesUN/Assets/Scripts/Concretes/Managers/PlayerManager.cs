@@ -10,7 +10,6 @@ namespace Game.Concretes.Managers
         public event System.Action EventPlayerAttack;
         public event System.Action EventPlayerDead;
 
-
         void Awake()
         {
             Setup(this);

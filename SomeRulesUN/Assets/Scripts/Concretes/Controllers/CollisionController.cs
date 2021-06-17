@@ -15,8 +15,7 @@ namespace Game.Concretes.Controllers
             _playerController = playerController;
             rayDistance = _playerController.RayDistance;
         }
-        
-        internal void CollisionControl()
+        public void CollisionControl()
         {
             playerPos = _playerController.transform.position;
 

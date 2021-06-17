@@ -14,11 +14,11 @@ namespace Game.Animations {
             animator = playerController.GetComponent<Animator>();
         }
         
-        internal void PlayerDeadAnim()
+        public void PlayerDeadAnim()
         {
             animator.SetTrigger("IsDead");
         }
-        internal void PlayerAttackAnim()
+        public void PlayerAttackAnim()
         {
            // _playerController.IsAttack = false;
             
