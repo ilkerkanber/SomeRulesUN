@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Game.Concretes.Controllers
 {
-    public class CollisionController
+    public class PlayerCollisionController
     {
         RaycastHit targetObject;
         PlayerController _playerController;
         Vector3 playerPos;
         float rayDistance;
-        public CollisionController(PlayerController playerController)
+        public PlayerCollisionController(PlayerController playerController)
         {
             _playerController = playerController;
             rayDistance = _playerController.RayDistance;

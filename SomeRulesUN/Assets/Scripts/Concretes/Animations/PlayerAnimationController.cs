@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Animations {
-    public class AnimatorController
+namespace Game.Concretes.Animations {
+    public class PlayerAnimationController
     {
         Animator animator;
         float AnimationRespawnTime = 1f;
         float waitTime;
-        public AnimatorController(PlayerController playerController)
+        public PlayerAnimationController(PlayerController playerController)
         {
             animator = playerController.GetComponent<Animator>();
         }

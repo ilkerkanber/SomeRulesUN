@@ -8,7 +8,6 @@ namespace Game.Abstracts.Controllers{
         Transform transform { get; }
         float HorizontalSpeed { get; }
         float VerticalSpeed { get; }
-    
     }
 }
 

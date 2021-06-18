@@ -4,10 +4,10 @@ using Game.Concretes.Controllers;
 using UnityEngine;
 
 namespace Game.Concretes.Movements {
-    public class PlayerHorizontalMover: IHorizontalMover
+    public class HorizontalMover: IHorizontalMover
     {
         IEntityController _IentityController;        
-        public PlayerHorizontalMover(IEntityController entityController)
+        public HorizontalMover(IEntityController entityController)
         {
             _IentityController = entityController;
         }

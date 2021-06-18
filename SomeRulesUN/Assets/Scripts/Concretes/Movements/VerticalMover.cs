@@ -1,11 +1,12 @@
 using Game.Abstracts.Controllers;
+using Game.Abstracts.Movements;
 using UnityEngine;
 
 namespace Game.Concretes.Movements {
-    public class PlayerVerticalMover:IVerticalMover
+    public class VerticalMover:IVerticalMover
     {
         IEntityController _IentityController;
-        public PlayerVerticalMover(IEntityController entityController)
+        public VerticalMover(IEntityController entityController)
         {
             _IentityController = entityController;
         }
