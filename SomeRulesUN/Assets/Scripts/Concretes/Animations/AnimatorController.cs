@@ -13,7 +13,6 @@ namespace Game.Animations {
         {
             animator = playerController.GetComponent<Animator>();
         }
-        
         public void PlayerDeadAnim()
         {
             animator.SetTrigger("IsDead");

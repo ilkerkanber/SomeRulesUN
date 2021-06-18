@@ -2,15 +2,17 @@ using Game.Abstracts.Inputs;
 using Game.Animations;
 using Game.Concretes.Managers;
 using Game.Concretes.Movements;
+using Game.Abstracts.Movements;
 using UnityEngine;
+using Game.Abstracts.Controllers;
 
 namespace Game.Concretes.Controllers {
-    public class PlayerController : PlayerInput
+    public class PlayerController : PlayerInput,IEntityController
     {   
-        PlayerHorizontalMover _playerHorizontalMover;
-        PlayerVerticalMover _playerVerticalMover;
+        IHorizontalMover _IhorizontalMover;
+        IVerticalMover _IverticalMover;
         AnimatorController _animatorController;
-        CollisionController _raycastController;
+        CollisionController _collisionController;
 
         public bool IsDead { get; set; }
         public bool IsAttack { get; set; }
@@ -26,9 +28,9 @@ namespace Game.Concretes.Controllers {
         void Awake()
         {
             _animatorController = new AnimatorController(this);
-            _playerHorizontalMover = new PlayerHorizontalMover(this);
-            _playerVerticalMover = new PlayerVerticalMover(this);
-            _raycastController = new CollisionController(this);
+            _IhorizontalMover = new PlayerHorizontalMover(this);
+            _IverticalMover = new PlayerVerticalMover(this);
+            _collisionController = new CollisionController(this);
         }
         void Start()
         {
@@ -39,12 +41,11 @@ namespace Game.Concretes.Controllers {
         {
             PlayerManager.Instance.EventPlayerAttack -= Attack;
             PlayerManager.Instance.EventPlayerDead -= Dead;
-
         }
       
         void Update()
         {
-            _raycastController.CollisionControl();
+            _collisionController.CollisionControl();
             KeyController();
             if (IsAttack)
             {
@@ -58,15 +59,15 @@ namespace Game.Concretes.Controllers {
         }
         void FixedUpdate()
         {
-            _playerHorizontalMover.HorMove(HorizontalSpeed);
+            _IhorizontalMover.HorMove(HorizontalSpeed);
 
             if (LeftKeyPressed) 
             {
-                _playerVerticalMover.Left(VerticalSpeed);
+                _IverticalMover.Left(VerticalSpeed);
             }
             if (RightKeyPressed)
             {
-                _playerVerticalMover.Right(VerticalSpeed);
+                _IverticalMover.Right(VerticalSpeed);
             }
         }
         void Attack()

@@ -1,17 +1,19 @@
+using Game.Abstracts.Controllers;
+using Game.Abstracts.Movements;
 using Game.Concretes.Controllers;
 using UnityEngine;
 
 namespace Game.Concretes.Movements {
-    public class PlayerHorizontalMover
+    public class PlayerHorizontalMover: IHorizontalMover
     {
-        PlayerController _playerController;        
-        public PlayerHorizontalMover(PlayerController playerController)
+        IEntityController _IentityController;        
+        public PlayerHorizontalMover(IEntityController entityController)
         {
-            _playerController = playerController;
+            _IentityController = entityController;
         }
         public void HorMove(float speed)
         {
-            _playerController.transform.Translate(Vector3.right * Time.deltaTime * speed);
+            _IentityController.transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
     }
 }

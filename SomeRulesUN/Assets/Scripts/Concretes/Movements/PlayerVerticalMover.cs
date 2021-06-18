@@ -1,21 +1,21 @@
-using Game.Concretes.Controllers;
+using Game.Abstracts.Controllers;
 using UnityEngine;
 
 namespace Game.Concretes.Movements {
-    public class PlayerVerticalMover 
+    public class PlayerVerticalMover:IVerticalMover
     {
-        PlayerController _playerController;
-        public PlayerVerticalMover(PlayerController playerController)
+        IEntityController _IentityController;
+        public PlayerVerticalMover(IEntityController entityController)
         {
-            _playerController = playerController;
+            _IentityController = entityController;
         }
         public void Left(float speed)
         {
-            _playerController.transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            _IentityController.transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
         public void Right(float speed)
         {
-            _playerController.transform.Translate(-Vector3.forward * Time.deltaTime * speed);
+            _IentityController.transform.Translate(-Vector3.forward * Time.deltaTime * speed);
         }
     }
 }

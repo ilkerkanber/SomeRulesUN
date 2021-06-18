@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 6836393561254792233}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,7 +432,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 48
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &9022975183284581334
 MonoBehaviour:
@@ -446,7 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d7f6836c1e324448f4b73e3c5af653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 4
+  <RayDistance>k__BackingField: 1
+  <HorizontalSpeed>k__BackingField: 4
+  <VerticalSpeed>k__BackingField: 3
 --- !u!95 &6836393561254792233
 Animator:
   serializedVersion: 3
